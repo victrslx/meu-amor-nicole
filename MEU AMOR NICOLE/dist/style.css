@@ -202,3 +202,23 @@ body {
   font-size: 180px;
   font-weight: 600;
 }
+
+
+/* === Fix: proporcional para .float-text, spans e .big-heart sem deformar === */
+:root {
+  --float-scale: 0.60;
+  /* ajuste entre 0.55 ~ 0.75 */
+}
+
+.wrapper.open .float-text {
+  /* Escala tudo junto mantendo as proporções do coração e do texto */
+  transform: translateX(-51%) scale(var(--float-scale)) !important;
+  top: calc(-665px * var(--float-scale)) !important;
+  /* reposiciona proporcionalmente */
+  transition-delay: 1.2s;
+}
+
+/* Opcional: brilho do coração proporcional ao novo tamanho */
+.float-text .big-heart {
+  box-shadow: calc(-10px * var(--float-scale)) calc(10px * var(--float-scale)) calc(50px * var(--float-scale)) red !important;
+}

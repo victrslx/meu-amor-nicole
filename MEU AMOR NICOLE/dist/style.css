@@ -206,7 +206,7 @@ body {
 
 /* === Fix: proporcional para .float-text, spans e .big-heart sem deformar === */
 :root {
-  --float-scale: 0.40;
+  --float-scale: 0.10;
   /* ajuste entre 0.55 ~ 0.75 */
 }
 

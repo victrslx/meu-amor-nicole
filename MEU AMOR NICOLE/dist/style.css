@@ -1,0 +1,204 @@
+/* Created by Tivotal */
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #05353d;
+}
+
+.wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+  background: #f5edd1;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper .envelope {
+  position: relative;
+  width: 425px;
+  height: 230px;
+}
+
+.wrapper .envelope::before {
+  position: absolute;
+  content: "";
+  z-index: 4;
+  top: 0;
+  border-top: 130px solid #ecdeb8;
+  border-right: 212px solid transparent;
+  border-left: 212px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+
+.wrapper.open .envelope:before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.wrapper .envelope::after {
+  position: absolute;
+  content: "";
+  z-index: 4;
+  border-top: 130px solid transparent;
+  border-right: 212px solid #e6cfa7;
+  border-bottom: 100px solid #e6cfa7;
+  border-left: 212px solid #e6cfa7;
+}
+
+.envelope .letter {
+  position: absolute;
+  width: 87%;
+  max-height: 78%;
+  background: #fff;
+  padding: 22px 16px;
+  right: 6%;
+  bottom: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: bottom 0.9s ease-in-out, max-height 0.9s ease-in-out, padding 0.4s ease-in-out;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.wrapper.open .envelope .letter {
+  bottom: 177px;
+  /* sobe a carta sem distorcer */
+  max-height: 1000px;
+  /* suficiente para todo texto */
+  overflow: visible;
+  transition-delay: 0.85s;
+  /* ligeiro ajuste timing com flap */
+}
+
+.envelope .letter .text {
+  color: #222;
+  font-size: clamp(11px, 1.15vw, 15px);
+  /* responsivo e legível */
+  line-height: 1.45;
+  text-align: left;
+}
+
+/* título dentro da carta */
+.envelope .letter .text strong {
+  display: block;
+  font-size: clamp(13px, 1.4vw, 18px);
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-85%, -60%) rotate(45deg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out 1s;
+  transform-origin: bottom;
+}
+
+.wrapper.open .heart {
+  transform: translate(-20%, -40%) rotate(230deg);
+  transition-delay: 0.4s;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -7.5px;
+}
+
+.heart:after {
+  right: 7.5px;
+}
+
+.float-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-51%) scale(0);
+  /* top: -400px; */
+  top: -10px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  z-index: 1;
+  transition: all 1s ease-in-out;
+}
+
+.wrapper.open .float-text {
+  transform: translateX(-51%) scale(1);
+  top: -688px;
+  transition-delay: 1.2s;
+}
+
+.float-text .big-heart {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: red;
+  transform: rotate(-45deg);
+  box-shadow: -10px 10px 50px red;
+  animation: anim 1s linear infinite;
+}
+
+.float-text .big-heart::before,
+.float-text .big-heart::after {
+  position: absolute;
+  content: "";
+  height: 80px;
+  width: 80px;
+  background: red;
+  border-radius: 50%;
+}
+
+.float-text .big-heart::before {
+  top: -50%;
+}
+
+.float-text .big-heart::after {
+  right: -50%;
+}
+
+@keyframes anim {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(-45deg);
+  }
+
+  60% {
+    transform: scale(0.9) rotate(-45deg);
+  }
+}
+
+.float-text span {
+  min-width: 60px;
+  margin-left: 20px;
+  color: red;
+  font-size: 180px;
+  font-weight: 600;
+}
